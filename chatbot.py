@@ -39,7 +39,7 @@ def extract_json_from_response(text):
             print(f"Raw text: {text}")
             raise
 
-def ask(question, history):
+def ask(question):
     """Process the question using two different models."""
     try:
         # Step 1: Generate SQL query using Gemini Flash 1.5
@@ -63,11 +63,11 @@ def ask(question, history):
         query = sql_json["sqlQuery"]  
         # Execute the generated SQL query
         data = execute_query(query)
-        dataText = json.dumps(data)
+        data_text = json.dumps(data)
         
         # Step 2: Generate response using Gemini Flash 2.0
         response_result = response_chat.send_message(
-            f"The question of the user was: {question}.\n\n ----- \n\n The result of the query is: {dataText}\n\n ---- \n\n Now give user a pretty message in the specified JSON format."
+            f"The question of the user was: {question}.\n\n ----- \n\n The result of the query is: {data_text}\n\n ---- \n\n Now give user a pretty message in the specified JSON format."
         )
         
         response_json = extract_json_from_response(response_result.text)
