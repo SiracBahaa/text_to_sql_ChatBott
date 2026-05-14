@@ -39,7 +39,7 @@ def extract_json_from_response(text):
             print(f"Raw text: {text}")
             raise
 
-def ask(question):
+def ask(question, history):
     """Process the question using two different models."""
     try:
         # Step 1: Generate SQL query using Gemini Flash 1.5
