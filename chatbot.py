@@ -67,7 +67,7 @@ def ask(question, history):
         
         # Step 2: Generate response using Gemini Flash 2.0
         response_result = response_chat.send_message(
-            f"The question of the user was: {question}.\n\n ----- \n\n The result of the query is: {data_text}\n\n ---- \n\n Now give user a pretty message in the specified JSON format."
+            f"The question of the user was: {question}.\n\n ----- \n\n The result of the query is: {dataText}\n\n ---- \n\n Now give user a pretty message in the specified JSON format."
         )
         
         response_json = extract_json_from_response(response_result.text)
